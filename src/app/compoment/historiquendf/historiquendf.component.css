@@ -1,0 +1,31 @@
+.input
+{
+  width: 500px;
+}
+
+.validbutton{
+  background: rgba(78, 84, 234, 0.75);
+  color: white;
+  width: 304px;
+}
+
+.navigation{
+  background: rgba(78, 84, 234, 0.5);
+  margin-top: 50px;
+  height: 150px;
+}
+
+.buttonrange{
+  margin-top: 15px;
+  margin-left: 100px;
+}
+
+.spacing{
+  margin-left: 80px;
+}
+
+.button{
+  width: 150px;
+  height:100px;
+  font-size: 20px;
+}

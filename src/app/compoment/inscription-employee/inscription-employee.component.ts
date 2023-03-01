@@ -40,5 +40,8 @@ export class InscriptionEmployeeComponent implements OnInit {
   submit(){
     this.route.navigate(['/mesndf'])
   }
+  deconnect(){
+    this.route.navigate(['/connexion'])
+  }
 
 }

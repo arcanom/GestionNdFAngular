@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-traitementndf',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TraitementndfComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route : Router) { }
 
   ngOnInit(): void {
   }
 
+  deconnect(){
+    this.route.navigate(['/connexion'])
+  }
 }
