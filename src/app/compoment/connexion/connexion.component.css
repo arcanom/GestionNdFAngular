@@ -1,0 +1,14 @@
+.main{
+  margin-top: 150px;
+}
+
+.input
+{
+  width: 500px;
+}
+
+.button{
+  background: rgba(78, 84, 234, 0.75);
+  color: white;
+  width: 304px;
+}

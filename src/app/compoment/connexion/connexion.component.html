@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="d-flex justify-content-center main">
+    <div class="card col-lg-6 col-md-8 col-sm-11 p-2 d-flex justify-content-around" style="width:900px">
+      <div class="text-center mt-1">
+        <h2>Connexion</h2>
+      </div>
+      <form action="" [formGroup]="form" (ngSubmit)="connect()">
+        <div class="d-flex justify-content-between mb-3 ">
+          <label for="" class="form-label"> Nom</label>
+          <input type="text" class="form-control  input" formControlName="name">
+        </div>
+        <div *ngIf="name.invalid && name.touched"class="text-danger text-center">
+           <div *ngIf="name.errors?.['required']">
+            <small> Ce champ est requis</small>
+           </div>
+        </div>
+        <div class="d-flex justify-content-between mb-3 ">
+          <label for="" class="form-label"> Prenom</label>
+          <input type="text" class="form-control  input " formControlName="firstName">
+        </div>
+        <div *ngIf="firstName.invalid && firstName.touched"class="text-danger text-center">
+          <div *ngIf="firstName.errors?.['required']">
+           <small> Ce champ est requis</small>
+          </div>
+       </div>
+        <div class="d-flex justify-content-between mb-3 ">
+          <label for="" class="form-label"> Mot de passe</label>
+          <input type="password" class="form-control input " formControlName="password">
+        </div>
+        <div *ngIf="password.invalid && password.touched"class="text-danger text-center">
+          <div *ngIf="password.errors?.['required']">
+           <small> Ce champ est requis</small>
+          </div>
+          <div *ngIf="password.errors?.['pattern']">
+            <small> Mot de passe incorrect</small>
+          </div>
+       </div>
+       <div class="text-center mt-3 mb-3">
+        <button type="submit" class="btn rounded-pill button"> Connexion</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+</div>
