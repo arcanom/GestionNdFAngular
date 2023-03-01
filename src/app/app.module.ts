@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { FormulaireNdfComponent } from './compoment/formulaire-ndf/formulaire-ndf.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     MesndfComponent,
     TraitementndfComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FormulaireNdfComponent
   ],
   imports: [
     BrowserModule,

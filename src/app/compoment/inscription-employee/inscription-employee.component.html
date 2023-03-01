@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center main">
     <div class="card col-lg-6 col-md-8 col-sm-11 p-2 d-flex justify-content-around" style="width:900px">
       <div class="text-center">
-        <h2>Connexion</h2>
+        <h2>Inscription d'un employée</h2>
       </div>
       <form action="" [formGroup]="form" (ngSubmit)="submit()">
         <div class="d-flex justify-content-between mb-3 ">
@@ -34,7 +34,7 @@
           <div *ngIf="password.errors?.['pattern']">
             <small> Le mot de passe doit etre de 8 caracteres dont:</small>
             <ul>
-              <li>    <small>1 lettre miniscule</small></li>
+              <li><small>1 lettre miniscule</small></li>
               <li> <small>1 lettre majuscule</small></li>
               <li> <small>1 chiffre</small></li>
               <li> 1 caractere spécial</li>
@@ -42,7 +42,7 @@
           </div>
        </div>
        <div class="text-center mt-3">
-        <button type="submit" class="btn rounded-pill button"> Connexion</button>
+        <button type="submit" class="btn rounded-pill button"> Inscrire</button>
       </div>
       </form>
     </div>

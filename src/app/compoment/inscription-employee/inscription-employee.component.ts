@@ -38,7 +38,7 @@ export class InscriptionEmployeeComponent implements OnInit {
   }
 
   submit(){
-    
+    this.route.navigate(['/mesndf'])
   }
 
 }
