@@ -26,7 +26,7 @@
     <div class="d-flex justify-content-center main">
     <div class="card text-center col-lg-6 col-md-8 col-sm-11 p-2 d-flex justify-content-around" style="width:900px">
       <h2>Formulaire notes de frais</h2>
-      <form action="" [formGroup]="form" (ngSubmit)="submit()">
+      <form action="" [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
       <div class="d-flex justify-content-between mb-3 ">
         <label for="" class="form-label ms-4"> Titre</label>
         <input type="text" class="form-control  input" formControlName="title">
@@ -57,10 +57,7 @@
    <div class="d-flex justify-content-between mb-3 ">
     <label for="" class="form-label ms-4"> Catégorie</label>
     <select class="form-select input" aria-label="Default select example" formControlName="categorie">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option *ngFor="let categorie of categories" value={{categorie.id}}>{{categorie.name}}</option>
     </select>
    </div>
    <div *ngIf="categorie.invalid && categorie.touched"class="text-danger text-center">

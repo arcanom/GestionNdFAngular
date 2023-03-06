@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/service/http-service.service';
-
+import { Ndfrequest} from 'src/app/model//ndfrequest'
+import { Ndfresponse } from 'src/app/model/ndfresponse';
 @Component({
   selector: 'app-formulaire-ndf',
   templateUrl: './formulaire-ndf.component.html',
@@ -11,11 +12,25 @@ import { HttpServiceService } from 'src/app/service/http-service.service';
 export class FormulaireNdfComponent implements OnInit {
   form : FormGroup
   myFiles : any[] =[]
+  ndf : Ndfrequest
+  categories: any
+  data : any
+  id : any
+  idNdf : number
   constructor(private fb : FormBuilder,
     private httpService : HttpServiceService,
     private route: Router ) { }
 
+
+    getCategories(){
+      this.httpService.getAllCategories().subscribe(x=>{
+        this.categories = x;
+        console.log(this.categories)
+      })
+    }
+
   ngOnInit(): void {
+    this.getCategories()
     this.form =  this.fb.group({
       title: this.fb.control('',[Validators.required]),
       date: this.fb.control('',[Validators.required]),
@@ -57,13 +72,43 @@ export class FormulaireNdfComponent implements OnInit {
 
    submit(){
     if(this.form.valid){
-      const formData = new FormData();
+      // console.log(this.form.value)
+      // console.log(this.myFiles)
+      if(this.form.valid){
+          this.ndf = {
+            title : this.form.value.title,
+            description: this.form.value.description,
+            amount : this.form.value.amount,
+            date : this.form.value.date,
+            status: "INPROGRESS",
+            admin: 0,
+            employee: 0,
+            category: this.form.value.categorie
+          }
 
-      for(let i=0;i < this.myFiles.length;i++){
-        // console.log(this.myFiles[i])
-        formData.append(this.myFiles[i].name,this.myFiles[i])
-        console.log(formData.get(this.myFiles[i].name))
+          // console.log(this.ndf)
+          this.httpService.createNdF(this.ndf).subscribe(x => {
+              this.data = x
+              this.id = this.data.id
+              localStorage.setItem("idNdf",this.id)
+
+          })
+
+          this.idNdf = JSON.parse(localStorage.getItem("idNdf"))
+          // console.log(this.idNdf)
+          for(let i=0;i < this.myFiles.length;i++){
+            console.log(this.myFiles[i])
+           this.httpService.createUpload(this.myFiles[i],this.idNdf).subscribe({
+            next: (y) =>{
+              console.log(y)
+            },
+            error:(err) => console.log(err.message)
+           })
+         }
       }
+
+
+
 
 
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Employeerequest } from 'src/app/model/employeerequest';
 import { HttpServiceService } from 'src/app/service/http-service.service';
 import { StorageService } from 'src/app/service/storage.service';
 
@@ -11,7 +12,7 @@ import { StorageService } from 'src/app/service/storage.service';
 })
 export class InscriptionEmployeeComponent implements OnInit {
   form : FormGroup
-
+  employee :  Employeerequest
   constructor(private fb : FormBuilder,
     private route : Router,
     private storageService :  StorageService,
@@ -21,7 +22,7 @@ export class InscriptionEmployeeComponent implements OnInit {
     this.form =  this.fb.group({
       name: this.fb.control('',[Validators.required]),
       firstName: this.fb.control('',[Validators.required]),
-      password: this.fb.control('',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
+      password: this.fb.control('',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}')])
     })
   }
 
@@ -38,7 +39,17 @@ export class InscriptionEmployeeComponent implements OnInit {
   }
 
   submit(){
-    this.route.navigate(['/mesndf'])
+    if(this.form.valid){
+        this.employee = {
+          lastName: this.form.value.name,
+          firstName: this.form.value.firstName,
+          password: this.form.value.password
+        }
+        this.httpService.createEmploye(this.employee).subscribe(x=>{
+          console.log(x)
+        })
+    }
+    // this.route.navigate(['/mesndf'])
   }
   deconnect(){
     this.route.navigate(['/connexion'])

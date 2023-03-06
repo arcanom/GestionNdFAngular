@@ -10,7 +10,7 @@ import { TraitementndfComponent } from './compoment/traitementndf/traitementndf.
 
 const routes: Routes = [
   {path:"connexion",component:ConnexionComponent},
-  {path:"details",component:DetailsndfComponent},
+  {path:"details/{id}",component:DetailsndfComponent},
   {path:"historique",component:HistoriquendfComponent},
   {path:"inscription-employee",component:InscriptionEmployeeComponent},
   {path:"formulaire-ndf",component:FormulaireNdfComponent},
