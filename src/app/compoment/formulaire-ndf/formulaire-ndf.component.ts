@@ -17,6 +17,7 @@ export class FormulaireNdfComponent implements OnInit {
   data : any
   id : any
   idNdf : number
+  formData : any
   constructor(private fb : FormBuilder,
     private httpService : HttpServiceService,
     private route: Router ) { }
@@ -98,12 +99,15 @@ export class FormulaireNdfComponent implements OnInit {
           // console.log(this.idNdf)
           for(let i=0;i < this.myFiles.length;i++){
             console.log(this.myFiles[i])
-           this.httpService.createUpload(this.myFiles[i],this.idNdf).subscribe({
+            this.formData = new FormData()
+            this.formData.append("file",this.myFiles[i])
+           this.httpService.createUpload(this.formData,this.idNdf).subscribe({
             next: (y) =>{
               console.log(y)
             },
             error:(err) => console.log(err.message)
            })
+           this.formData = 0
          }
       }
 

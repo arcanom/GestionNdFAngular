@@ -4,6 +4,20 @@
       <div class="text-center mt-1">
         <h2>Details </h2>
       </div>
+      <div class="text-center">
+        <div *ngFor="let img of ndf.proofs">
+            <img src={{img.path}} alt="">
+        </div>
+        <h2>{{ndf.title}}</h2>
+        <p>Fait le {{ndf.date | date}}</p>
+        <p> Coût : {{ndf.amount}} $ </p>
+        <p>Description: {{ndf.description}}</p>
+        <p>Categorie : {{ndf.category.name}}</p>
+        <p *ngIf="ndf.status=='INPROGRESS'"  class="text-primary"> En cours de traitement</p>
+        <p *ngIf="ndf.status=='VALIDATED'"  class="text-success"> Validé en cours  de paiement</p>
+        <p *ngIf="ndf.status=='REFUSED'"  class="text-danger"> Refusé</p>
+        <p *ngIf="ndf.status=='PAID'"  class="text-warning"> Payé</p>
+      </div>
       <div class="text-end">
         <button class="btn btn-primary"  routerLink="/mesndf">Retour</button>
         </div>

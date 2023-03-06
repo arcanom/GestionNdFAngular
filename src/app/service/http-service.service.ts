@@ -15,7 +15,7 @@ export class HttpServiceService {
   createNdF(ndf: Ndfrequest){
     return this.http.post(this.url+"expense-report",ndf)
   }
-  createUpload(file: File, id:number){
+  createUpload(file: any, id:number){
     return this.http.post(this.url+"expense-report/upload/"+id,file)
   }
 
@@ -26,5 +26,18 @@ export class HttpServiceService {
   getAllCategories(){
     return this.http.get(this.url+"category")
   }
+
+  getAllNdf(){
+    return this.http.get(this.url+"expense-report")
+  }
+
+  getNdfById(id:number){
+    return this.http.get(this.url+"expense-report/"+id)
+  }
+
+  updateStatusNdf(id:number,status: any){
+    return this.http.patch(this.url+"expense-report/"+id,status)
+  }
+
 
 }

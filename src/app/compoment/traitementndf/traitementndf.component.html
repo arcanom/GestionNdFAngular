@@ -35,6 +35,15 @@
           </tr>
         </thead>
         <tbody>
+        <tr  *ngFor="let ndf of ndfs">
+          <th *ngIf="ndf.status=='INPROGRESS'">{{ndf.title}}</th>
+          <th *ngIf="ndf.status=='INPROGRESS'">{{ndf.date | date }}</th>
+          <th *ngIf="ndf.status=='INPROGRESS'">{{ndf.amount}}</th>
+          <th *ngIf="ndf.status=='INPROGRESS'"> <button class="btn btn-primary ms-3" [routerLink]="['/details',ndf.id]">Details</button>
+            <button class="btn btn-success ms-3" (click)="updateStatusToValidated(ndf.id)">Valider</button>
+            <button class="btn btn-danger ms-3"(click)="updateStatusToRefused(ndf.id)" >Refuser</button></th>
+
+        </tr>
 
         </tbody>
       </table>
@@ -51,7 +60,12 @@
           </tr>
         </thead>
         <tbody>
-
+            <tr scope="row" *ngFor="let ndf of ndfs">
+              <th *ngIf="ndf.status=='VALIDATED'">{{ndf.title}}</th>
+              <th *ngIf="ndf.status=='VALIDATED'">{{ndf.date | date }}</th>
+              <th *ngIf="ndf.status=='VALIDATED'">{{ndf.amount}}</th>
+              <th *ngIf="ndf.status=='VALIDATED'"> <button class="btn btn-primary ms-3" [routerLink]="['/details',ndf.id]">Details</button>  <button class="btn btn-warning ms-3 " (click)="updateStatusToPaid(ndf.id)" >Payer</button>
+            </tr>
         </tbody>
       </table>
     </div>

@@ -37,7 +37,13 @@
           </tr>
         </thead>
         <tbody>
+            <tr scope="row" *ngFor="let ndf of ndfs">
 
+              <th *ngIf="ndf.status=='PAID'">{{ndf.title}}</th>
+              <th *ngIf="ndf.status=='PAID'">{{ndf.date | date }}</th>
+              <th *ngIf="ndf.status=='PAID'">{{ndf.amount}}</th>
+              <th *ngIf="ndf.status=='PAID'"> <button class="btn btn-primary ms-3" [routerLink]="['/details',ndf.id]">Details</button>  <button class="btn btn-primary ms-3" disabled>Terminé</button>
+            </tr>
         </tbody>
       </table>
     </div>
@@ -53,7 +59,12 @@
           </tr>
         </thead>
         <tbody>
-
+          <tr scope="row" *ngFor="let ndf of ndfs">
+            <th *ngIf="ndf.status=='REFUSED'">{{ndf.title}}</th>
+            <th *ngIf="ndf.status=='REFUSED'">{{ndf.date | date }}</th>
+            <th *ngIf="ndf.status=='REFUSED'">{{ndf.amount}}</th>
+            <th *ngIf="ndf.status=='REFUSED'"> <button class="btn btn-primary ms-3" [routerLink]="['/details',ndf.id]">Details</button>
+          </tr>
         </tbody>
       </table>
     </div>
