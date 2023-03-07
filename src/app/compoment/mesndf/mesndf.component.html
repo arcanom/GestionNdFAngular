@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card navigation">
+  <div class="card navigation" *ngIf="role=='admin'">
     <nav class="navbar ">
         <div class="buttonrange d-flex justify-content-around">
           <div>
@@ -21,6 +21,19 @@
 
     </nav>
 
+    </div>
+    <div class="card navigation" *ngIf="role=='user'">
+      <nav class="navbar">
+        <div class="buttonrangeuser d-flex justify-content-center">
+          <div class="">
+            <button class="btn btn-success button" routerLink="/formulaire-ndf"> Créer notes de frais </button>
+          </div>
+          <div class="spacing">
+            <button class="btn btn-danger button" (click)="deconnect()"> Deconnexion</button>
+          </div>
+        </div>
+
+    </nav>
   </div>
   <div class="mt-4">
     <h2>Mes notes de frais</h2>

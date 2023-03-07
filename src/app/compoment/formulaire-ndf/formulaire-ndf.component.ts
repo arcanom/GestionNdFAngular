@@ -18,6 +18,7 @@ export class FormulaireNdfComponent implements OnInit {
   id : any
   idNdf : number
   formData : any
+  role : any = "admin"
   constructor(private fb : FormBuilder,
     private httpService : HttpServiceService,
     private route: Router ) { }

@@ -6,23 +6,14 @@
       </div>
       <form action="" [formGroup]="form" (ngSubmit)="connect()">
         <div class="d-flex justify-content-between mb-3 ">
-          <label for="" class="form-label"> Nom</label>
+          <label for="" class="form-label"> Identifiant ( nom.prenom)</label>
           <input type="text" class="form-control  input" formControlName="name">
         </div>
-        <div *ngIf="name.invalid && name.touched"class="text-danger text-center">
-           <div *ngIf="name.errors?.['required']">
+        <div *ngIf="userName.invalid && userName.touched"class="text-danger text-center">
+           <div *ngIf="userName.errors?.['required']">
             <small> Ce champ est requis</small>
            </div>
-        </div>
-        <div class="d-flex justify-content-between mb-3 ">
-          <label for="" class="form-label"> Prenom</label>
-          <input type="text" class="form-control  input " formControlName="firstName">
-        </div>
-        <div *ngIf="firstName.invalid && firstName.touched"class="text-danger text-center">
-          <div *ngIf="firstName.errors?.['required']">
-           <small> Ce champ est requis</small>
           </div>
-       </div>
         <div class="d-flex justify-content-between mb-3 ">
           <label for="" class="form-label"> Mot de passe</label>
           <input type="password" class="form-control input " formControlName="password">

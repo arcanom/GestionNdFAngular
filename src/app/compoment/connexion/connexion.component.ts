@@ -26,14 +26,9 @@ form : FormGroup
     })
   }
 
-  get name(){
+  get userName(){
     return this.form.get("name")
   }
-
-  get firstName(){
-    return this.form.get("firstName")
-  }
-
   get password(){
     return this.form.get("password")
   }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./mesndf.component.css']
 })
 export class MesndfComponent implements OnInit {
-
+role : any = "admin"
   constructor(private route : Router) { }
 
   ngOnInit(): void {
