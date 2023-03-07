@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Employeelogin } from '../model/employeelogin';
 import { Employeerequest } from '../model/employeerequest';
 import { Ndfrequest } from '../model/ndfrequest';
 
@@ -22,6 +23,9 @@ export class HttpServiceService {
   createEmploye(employee : Employeerequest){
     return this.http.post(this.url+"employee",employee)
   }
+
+  login(username : Employeelogin){
+    return this.http.post(this.url+"login",username) }
 
   getAllCategories(){
     return this.http.get(this.url+"category")
