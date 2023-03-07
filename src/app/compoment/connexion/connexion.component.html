@@ -7,10 +7,10 @@
       <form action="" [formGroup]="form" (ngSubmit)="connect()">
         <div class="d-flex justify-content-between mb-3 ">
           <label for="" class="form-label"> Identifiant ( nom.prenom)</label>
-          <input type="text" class="form-control  input" formControlName="name">
+          <input type="text" class="form-control  input" formControlName="username">
         </div>
-        <div *ngIf="userName.invalid && userName.touched"class="text-danger text-center">
-           <div *ngIf="userName.errors?.['required']">
+        <div *ngIf="username.invalid && username.touched"class="text-danger text-center">
+           <div *ngIf="username.errors?.['required']">
             <small> Ce champ est requis</small>
            </div>
           </div>
