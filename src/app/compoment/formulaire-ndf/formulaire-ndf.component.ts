@@ -73,7 +73,7 @@ export class FormulaireNdfComponent implements OnInit {
    }
 
    submit(){
-    if(this.form.valid){
+
       // console.log(this.form.value)
       // console.log(this.myFiles)
       if(this.form.valid){
@@ -110,15 +110,15 @@ export class FormulaireNdfComponent implements OnInit {
            })
            this.formData = 0
          }
-      }
+
 
 
 
 
 
     }
-    // this.route.navigate(['/mesndf'])
     this.myFiles = []
+    this.route.navigate(['/mesndf'])
    }
 
    deconnect(){

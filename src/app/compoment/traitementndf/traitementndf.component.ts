@@ -38,7 +38,7 @@ updateStatusToValidated(id:number){
 
 updateStatusToRefused(id:number){
   this.status = {
-    status :"REFUSED"
+    status : "REFUSED"
   }
 
   this.httpService.updateStatusNdf(id,this.status).subscribe(x=> {

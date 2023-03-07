@@ -1,26 +1,22 @@
 <div class="container">
   <div class="card navigation" *ngIf="role=='admin'">
-    <nav class="navbar">
-        <div class="buttonrange d-flex justify-content-around ">
+        <div class="d-flex justify-content-around flex-wrap">
           <div>
-            <button class="btn btn-success button" routerLink="/inscription-employee"> Inscrire employée</button>
+            <button class="btn btn-success button p-1" routerLink="/inscription-employee"> Inscrire employée</button>
           </div>
-          <div class="spacing">
-            <button class="btn btn-primary button" routerLink="/mesndf"> Mes notes de frais </button>
+          <div>
+            <button class="btn btn-primary button p-1" routerLink="/mesndf"> Mes notes de frais </button>
           </div>
-          <div class="spacing">
-            <button class="btn btn-primary button" routerLink="/traitementndf"> Voir notes de frais </button>
+          <div>
+            <button class="btn btn-primary button p-1" routerLink="/traitementndf"> Voir notes de frais </button>
           </div>
-          <div class="spacing">
-            <button class="btn btn-primary button" routerLink="/historique"> Historique notes de frais </button>
+          <div>
+            <button class="btn btn-primary button p-1" routerLink="/historique"> Historique notes de frais </button>
           </div>
-          <div class="spacing">
-            <button class="btn btn-danger button" (click)="deconnect()"> Deconnexion</button>
+          <div>
+            <button class="btn btn-danger button p-1" (click)="deconnect()"> Deconnexion</button>
           </div>
         </div>
-
-    </nav>
-
   </div>
   <div class="card navigation" *ngIf="role=='user'">
     <nav class="navbar">

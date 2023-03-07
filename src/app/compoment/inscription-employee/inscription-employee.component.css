@@ -13,7 +13,7 @@
 .navigation{
   background: rgba(78, 84, 234, 0.5);
   margin-top: 50px;
-  height: 150px;
+  padding: 10px;
 }
 
 .buttonrange{
@@ -26,7 +26,7 @@
 }
 
 .button{
+  margin-top: 10px;
+  height:50px;
   width: 150px;
-  height:100px;
-  font-size: 20px;
 }
