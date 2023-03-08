@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/service/http-service.service';
+import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
   selector: 'app-traitementndf',
@@ -11,23 +12,28 @@ export class TraitementndfComponent implements OnInit {
 
   ndfs :  any
   status: any
-  constructor(private route : Router,private httpService :  HttpServiceService) { }
+  idAdmin: any
+
+  constructor(private route : Router,private httpService :  HttpServiceService, private storageService : StorageService) { }
 
   ngOnInit(): void {
     this.getAllNdf()
+    this.idAdmin =  localStorage.getItem("id")
+
   }
 
 
 getAllNdf(){
     this.httpService.getAllNdf().subscribe(x => {
       this.ndfs = x
-      console.log(this.ndfs)
+      // console.log(this.ndfs)
     })
 }
 
 updateStatusToValidated(id:number){
   this.status = {
-    status :"VALIDATED"
+    status :"VALIDATED",
+    admin: this.idAdmin
   }
 
   this.httpService.updateStatusNdf(id,this.status).subscribe(x=> {
@@ -38,7 +44,8 @@ updateStatusToValidated(id:number){
 
 updateStatusToRefused(id:number){
   this.status = {
-    status : "REFUSED"
+    status : "REFUSED",
+    admin: this.idAdmin
   }
 
   this.httpService.updateStatusNdf(id,this.status).subscribe(x=> {
@@ -49,7 +56,8 @@ updateStatusToRefused(id:number){
 
 updateStatusToPaid(id: number){
   this.status = {
-    status: "PAID"
+    status: "PAID",
+    admin: this.idAdmin
   }
 
   this.httpService.updateStatusNdf(id,this.status).subscribe(x=> {
@@ -59,6 +67,8 @@ updateStatusToPaid(id: number){
 }
 
   deconnect(){
+    sessionStorage.clear()
+    this.storageService.clear()
     this.route.navigate(['/connexion'])
   }
 

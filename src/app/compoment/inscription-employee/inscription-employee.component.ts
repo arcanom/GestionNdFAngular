@@ -52,6 +52,8 @@ export class InscriptionEmployeeComponent implements OnInit {
     // this.route.navigate(['/mesndf'])
   }
   deconnect(){
+    sessionStorage.clear()
+    this.storageService.clear()
     this.route.navigate(['/connexion'])
   }
 

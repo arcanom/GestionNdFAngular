@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/service/http-service.service';
+import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
   selector: 'app-historiquendf',
@@ -9,7 +10,7 @@ import { HttpServiceService } from 'src/app/service/http-service.service';
 })
 export class HistoriquendfComponent implements OnInit {
 ndfs : any
-  constructor(private route: Router, private httpService : HttpServiceService) { }
+  constructor(private route: Router, private httpService : HttpServiceService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.getAllNdf()
@@ -23,6 +24,8 @@ ndfs : any
     })
 }
   deconnect(){
+    sessionStorage.clear()
+    this.storageService.clear()
     this.route.navigate(['/connexion'])
   }
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card navigation" *ngIf="role=='admin'">
+  <div class="card navigation" *ngIf="role=='ROLE_ADMIN'">
         <div class="d-flex justify-content-around flex-wrap">
           <div>
             <button class="btn btn-success button p-1" routerLink="/inscription-employee"> Inscrire employée</button>
@@ -18,7 +18,7 @@
           </div>
         </div>
     </div>
-    <div class="card navigation" *ngIf="role=='user'">
+    <div class="card navigation" *ngIf="role=='ROLE_USER'">
       <nav class="navbar">
         <div class="buttonrangeuser d-flex justify-content-center">
           <div class="">
@@ -40,11 +40,21 @@
             <th scope="col">Titre</th>
             <th scope="col">Date</th>
             <th scope="col">Montant</th>
+            <th scope="col">Statut</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-
+            <tr scope="row" *ngFor="let ndf of ndfs">
+              <th>{{ndf.title}} </th>
+              <th>{{ndf.date | date}}</th>
+              <th> {{ndf.amount}} </th>
+              <th *ngIf="ndf.status=='INPROGRESS'"> En cours</th>
+              <th *ngIf="ndf.status=='VALIDATED'"> Validé </th>
+              <th *ngIf="ndf.status=='PAID'"> Payé</th>
+              <th *ngIf="ndf.status=='REFUSED'"> Refusé</th>
+              <th>  <button class="btn btn-primary ms-3" [routerLink]="['/details',ndf.id]">Details</button></th>
+            </tr>
         </tbody>
       </table>
     </div>

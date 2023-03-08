@@ -19,6 +19,14 @@ export class DetailsndfComponent implements OnInit {
   proofs: any
   category: any
   status:any
+  idEmploye: any
+  nameEmploye: any
+  nameEmployeFirstname: any
+  nameEmployeLastname: any
+  idAdmin: any
+  nameAdmin : any
+  nameAdminFirstname: any
+  nameAdminLastname: any
   ngOnInit(): void {
    this.id = this.activatedRoute.snapshot.params['id']
     this.HttpService.getNdfById(this.id).subscribe(x => {
@@ -30,8 +38,27 @@ export class DetailsndfComponent implements OnInit {
       this.proofs =  this.ndf.proofs
       this.category = this.ndf.category.name
       this.status = this.ndf.status
-      console.log(this.ndf)
+      localStorage.setItem("idEmployee",this.ndf.employee)
+      localStorage.setItem("idAdmin",this.ndf.admin)
+
     })
+
+    this.idEmploye = localStorage.getItem("idEmployee")
+    this.idAdmin = localStorage.getItem("idAdmin")
+
+    this.HttpService.getEmployeeById(this.idEmploye).subscribe(x=>{
+      this.nameEmploye =  x;
+      this.nameEmployeFirstname = this.nameEmploye.firstName
+      this.nameEmployeLastname = this.nameEmploye.lastName
+    })
+
+    this.HttpService.getEmployeeById(this.idAdmin).subscribe(x=>{
+      this.nameAdmin =  x;
+      this.nameAdminFirstname = this.nameAdmin.firstName
+      this.nameAdminLastname = this.nameAdmin.lastName
+
+    })
+
    }
   }
 

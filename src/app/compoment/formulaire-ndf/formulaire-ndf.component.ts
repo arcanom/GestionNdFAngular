@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/service/http-service.service';
 import { Ndfrequest} from 'src/app/model//ndfrequest'
 import { Ndfresponse } from 'src/app/model/ndfresponse';
+import { StorageService } from 'src/app/service/storage.service';
 @Component({
   selector: 'app-formulaire-ndf',
   templateUrl: './formulaire-ndf.component.html',
@@ -16,12 +17,14 @@ export class FormulaireNdfComponent implements OnInit {
   categories: any
   data : any
   id : any
+  idEmployee : any
   idNdf : number
   formData : any
   role : any = "admin"
   constructor(private fb : FormBuilder,
     private httpService : HttpServiceService,
-    private route: Router ) { }
+    private route: Router,
+    private storageService : StorageService ) { }
 
 
     getCategories(){
@@ -32,6 +35,7 @@ export class FormulaireNdfComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.idEmployee = localStorage.getItem("id")
     this.getCategories()
     this.form =  this.fb.group({
       title: this.fb.control('',[Validators.required]),
@@ -76,7 +80,9 @@ export class FormulaireNdfComponent implements OnInit {
 
       // console.log(this.form.value)
       // console.log(this.myFiles)
+
       if(this.form.valid){
+
           this.ndf = {
             title : this.form.value.title,
             description: this.form.value.description,
@@ -84,11 +90,11 @@ export class FormulaireNdfComponent implements OnInit {
             date : this.form.value.date,
             status: "INPROGRESS",
             admin: 0,
-            employee: 0,
+            employee: this.idEmployee,
             category: this.form.value.categorie
           }
 
-          // console.log(this.ndf)
+           console.log(this.ndf)
           this.httpService.createNdF(this.ndf).subscribe(x => {
               this.data = x
               this.id = this.data.id
@@ -122,7 +128,10 @@ export class FormulaireNdfComponent implements OnInit {
    }
 
    deconnect(){
+    sessionStorage.clear()
+    this.storageService.clear()
     this.route.navigate(['/connexion'])
+
   }
 
 }

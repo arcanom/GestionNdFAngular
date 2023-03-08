@@ -39,6 +39,18 @@ export class HttpServiceService {
     return this.http.get(this.url+"expense-report/"+id)
   }
 
+  getNdfByEmployeeId(idEmployee:number){
+    return this.http.get(this.url+"expense-report/employee/"+idEmployee)
+  }
+
+  getEmployeByUsername(search : any){
+    return this.http.get(this.url+"employee/login/"+search)
+  }
+
+  getEmployeeById(id : any){
+    return this.http.get(this.url+"employee/"+id)
+  }
+
   updateStatusNdf(id:number,status: any){
     return this.http.patch(this.url+"expense-report/"+id,status)
   }

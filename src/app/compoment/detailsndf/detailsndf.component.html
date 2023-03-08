@@ -13,6 +13,8 @@
         <p> Coût : {{amount}} $ </p>
         <p>Description: {{description}}</p>
         <p>Categorie : {{category}}</p>
+        <p>Crée par : {{nameEmployeFirstname}} {{nameEmployeLastname}}</p>
+        <p> Traité par : {{nameAdminFirstname}} {{nameAdminLastname}}</p>
         <p *ngIf="status=='INPROGRESS'"  class="text-primary"> En cours de traitement</p>
         <p *ngIf="status=='VALIDATED'"  class="text-success"> Validé en cours  de paiement</p>
         <p *ngIf="status=='REFUSED'"  class="text-danger"> Refusé</p>

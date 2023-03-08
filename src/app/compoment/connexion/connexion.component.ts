@@ -48,9 +48,12 @@ token: any
       this.data = responseData
       this.token = this.data.token
       console.log(this.token)
+      window.sessionStorage.setItem("Authorization",this.token);
+      window.sessionStorage.setItem("userdetails",JSON.stringify(this.data));
+      this.route.navigate(['/mesndf'])
       })
     }
-      // this.route.navigate(['/mesndf'])
+
   }
 
 }

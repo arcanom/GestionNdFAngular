@@ -7,40 +7,13 @@ export class StorageService {
 
   constructor() { }
 
-  getNom(){
-    return localStorage.getItem("nom")
-  }
+ getId(){
+  localStorage.getItem("id")
+ }
 
-  setNom(nom:any){
-    localStorage.setItem("nom",nom)
-  }
-
-  removeNom(){
-    localStorage.removeItem("nom")
-  }
-
-  getPrenom(){
-    return localStorage.getItem("prenom")
-  }
-
-  setPrenom(prenom:string){
-    localStorage.setItem("prenom",prenom)
-  }
-
-
-
-
-  getEmail(){
-    return localStorage.getItem("email")
-  }
-
-  setEmail(email: any ){
-    localStorage.setItem("email",email)
-  }
-
-  removeEmail(){
-    localStorage.removeItem("email")
-  }
+ setId(id :number){
+  localStorage.setItem("id",JSON.stringify(id))
+ }
 
   clear(){
     localStorage.clear()
