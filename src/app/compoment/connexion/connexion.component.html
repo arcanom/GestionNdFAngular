@@ -26,6 +26,9 @@
             <small> Mot de passe incorrect</small>
           </div>
        </div>
+       <div *ngIf="error != null">
+        <small> Identifiant ou mot de passe incorrect</small>
+    </div>
        <div class="text-center mt-3 mb-3">
         <button type="submit" class="btn rounded-pill button"> Connexion</button>
       </div>

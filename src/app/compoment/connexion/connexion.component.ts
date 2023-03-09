@@ -16,6 +16,7 @@ employee : Employeelogin
 model : any
 data : any
 token: any
+error: any
   constructor(private fb : FormBuilder,
     private route : Router,
     private storageService :  StorageService,
@@ -43,17 +44,22 @@ token: any
         username : this.form.value.username,
         password: this.form.value.password
       }
-      this.httpService.login(this.employee).subscribe((responseData)=>{
-
+      console.log(this.employee)
+      this.httpService.login(this.employee).subscribe({
+      next: (responseData) =>{
       this.data = responseData
       this.token = this.data.token
       console.log(this.token)
       window.sessionStorage.setItem("Authorization",this.token);
       window.sessionStorage.setItem("userdetails",JSON.stringify(this.data));
-      this.route.navigate(['/mesndf'])
-      })
-    }
 
+      this.route.navigate(['/mesndf'])
+      },
+        error:(err)=> this.error = err.message
+
+
+    })
   }
 
+}
 }

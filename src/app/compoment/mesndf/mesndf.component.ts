@@ -24,13 +24,15 @@ ndfs: any
     this.httpService.getEmployeByUsername(this.user).subscribe(x=> {
         this.data =  x
         console.log(this.data.id)
-        localStorage.setItem("id",this.data.id)
+        this.id = this.data.id
+        // localStorage.setItem("id",this.data.id)
+        this.httpService.getNdfByEmployeeId(this.id).subscribe(x=>{
+          this.ndfs =  x
+          // console.log(this.ndfs)
+      })
     })
-    this.id = localStorage.getItem("id")
-    this.httpService.getNdfByEmployeeId(this.id).subscribe(x=>{
-        this.ndfs =  x
-        // console.log(this.ndfs)
-    })
+    // this.id = localStorage.getItem("id")
+
   }
 
   deconnect(){

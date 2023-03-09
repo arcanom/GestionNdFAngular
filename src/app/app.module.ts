@@ -10,10 +10,11 @@ import { HistoriquendfComponent } from './compoment/historiquendf/historiquendf.
 import { MesndfComponent } from './compoment/mesndf/mesndf.component';
 import { TraitementndfComponent } from './compoment/traitementndf/traitementndf.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormulaireNdfComponent } from './compoment/formulaire-ndf/formulaire-ndf.component';
+import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 
 
 @NgModule({
@@ -36,7 +37,11 @@ import { FormulaireNdfComponent } from './compoment/formulaire-ndf/formulaire-nd
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
