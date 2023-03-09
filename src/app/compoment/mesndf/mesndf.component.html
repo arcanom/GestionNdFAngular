@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card navigation" *ngIf="role=='ROLE_ADMIN'">
+  <div class="card navigation" *ngIf="role=='1'">
         <div class="d-flex justify-content-around flex-wrap">
           <div>
             <button class="btn btn-success button p-1" routerLink="/inscription-employee"> Inscrire employée</button>
@@ -18,7 +18,7 @@
           </div>
         </div>
     </div>
-    <div class="card navigation" *ngIf="role=='ROLE_USER'">
+    <div class="card navigation" *ngIf="role=='2'">
       <nav class="navbar">
         <div class="buttonrangeuser d-flex justify-content-center">
           <div class="">

@@ -9,7 +9,7 @@ import { Ndfrequest } from '../model/ndfrequest';
 })
 export class HttpServiceService {
 
-  url : string = "http://localhost:8080/"
+  url : string = "http://localhost:8083/"
 
   constructor(private http : HttpClient) { }
 

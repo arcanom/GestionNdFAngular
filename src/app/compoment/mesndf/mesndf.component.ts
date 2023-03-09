@@ -19,13 +19,14 @@ ndfs: any
 
   ngOnInit(): void {
     this.userdetails =  JSON.parse(sessionStorage.getItem("userdetails"))
-    this.role =  this.userdetails.authorities[0].authority
     this.user = this.userdetails.username
     this.httpService.getEmployeByUsername(this.user).subscribe(x=> {
         this.data =  x
-        console.log(this.data.id)
+        console.log(this.data)
+        this.role = this.data.authorities
         this.id = this.data.id
-        // localStorage.setItem("id",this.data.id)
+        localStorage.setItem("role", this.role)
+        localStorage.setItem("id",this.id)
         this.httpService.getNdfByEmployeeId(this.id).subscribe(x=>{
           this.ndfs =  x
           // console.log(this.ndfs)

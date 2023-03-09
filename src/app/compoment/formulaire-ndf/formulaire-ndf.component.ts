@@ -18,9 +18,10 @@ export class FormulaireNdfComponent implements OnInit {
   data : any
   id : any
   idEmployee : any
+  userdetails : any
   idNdf : number
   formData : any
-  role : any = "admin"
+  role : any
   constructor(private fb : FormBuilder,
     private httpService : HttpServiceService,
     private route: Router,
@@ -36,6 +37,8 @@ export class FormulaireNdfComponent implements OnInit {
 
   ngOnInit(): void {
     this.idEmployee = localStorage.getItem("id")
+    this.userdetails =  JSON.parse(sessionStorage.getItem("userdetails"))
+    this.role =  localStorage.getItem("role")
     this.getCategories()
     this.form =  this.fb.group({
       title: this.fb.control('',[Validators.required]),
